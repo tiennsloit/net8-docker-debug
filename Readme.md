@@ -1,17 +1,26 @@
+# Instructions
+This project is a Hello World .NET 8 project that can be debugged with Docker using VS Code.
 
-#instruction
-https://www.youtube.com/watch?v=ds2bud0ZYTY
+For a detailed video tutorial, visit: [YouTube Video](https://www.youtube.com/watch?v=ds2bud0ZYTY)
 
-#version 1 - use dockerfile manually
--build the image 
-docker build -t nn1:2 . 
-- run the image
-docker run -p 5001:8080 -e ASPNETCORE_URLS=http://+:8080 --name mynet8 nn1:2
-
-#version 2 - use docker-compose
-run command: docker-compose up mynet8
-to shutdown: docker-compose down
-
-#Note
-Follow this to delete ~/.vsdbg on your macos to fix issue with debug
+## Version 1 - Using Dockerfile Manually
+### Build the Image
+```sh
+docker build -t tiennsloit/net8:1.0.2 .
+```
+### Run the Image
+```sh
+docker run -p 5001:8080 -e ASPNETCORE_URLS=http://+:8080 --name mynet8 tiennsloit/net8:1.0.2
+```
+## Version 2 - Using Docker Compose
+### Start the Service
+```sh
+docker-compose up mynet8
+```
+### Shutdown the Service
+```sh
+docker-compose down
+```
+### Note
+If you encounter issues with debugging, follow the instructions in this Stack Overflow post to delete ~/.vsdbg on your macOS.
 https://stackoverflow.com/questions/72288604/debugging-with-docker-net-core-attach-not-working-anymore
