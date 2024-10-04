@@ -16,3 +16,9 @@ RUN curl -sSL https://aka.ms/getvsdbgsh | bash /dev/stdin -v latest -l ~/vsdbg
 EXPOSE 8080
 CMD ["dotnet", "run", "--urls", "http://+:8080"]
 
+# Start new image for production
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS prod
+EXPOSE 8080
+WORKDIR /app
+COPY --from=debug /work/publish .
+ENTRYPOINT ["dotnet", "HelloWorldRazor.dll"]
